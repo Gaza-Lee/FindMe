@@ -13,17 +13,6 @@ namespace MauiApp1
             InitializeComponent();
         }
 
-        //private void OnCounterClicked(object sender, EventArgs e)
-        //{
-        //count++;
-
-        //if (count == 1)
-        //    CounterBtn.Text = $"You clicked {count} time";
-        //else
-        //    CounterBtn.Text = $"You clicked {count} times";
-
-        //SemanticScreenReader.Announce(CounterBtn.Text);
-        //}
         private async void OnFindMeClicked(object sender, EventArgs e)
         {
             var permissions = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
@@ -67,6 +56,12 @@ namespace MauiApp1
         {
             UserName = UsernameEntry.Text;
 
+            if (string.IsNullOrWhiteSpace(UserName))
+            {
+                await App.Current.MainPage.DisplayAlert("Input Required", "Please enter your name.", "OK");
+                return;
+            }
+           
             var locationRequest = new GeolocationRequest(GeolocationAccuracy.Best);
 
             var location = await Geolocation.GetLocationAsync(locationRequest);
