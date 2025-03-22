@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Image
+                Source="findme.png"
+                HeightRequest="185"
+                Aspect="AspectFit"
+                SemanticProperties.Description="dot net bot in a hovercraft number nine" />
+
+            <Label
+                Text="Find Me"
+                TextColor="Red"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1"
+                FontAttributes="Bold"
+                FontSize="50"/>
+
+            <Label
+                Text="Enter your name"
+                TextColor="Green"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="User enters name for identity" />
+
+            <Border Stroke="Black"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle10"
+                    Padding="10"
+                    >
+                  
+                <Entry
+                        Placeholder="Name"
+                        SemanticProperties.Hint="Enter your name to be used when sharing location"
+                        HorizontalOptions="Center"
+                        VerticalTextAlignment="Center"
+                        x:Name="UsernameEntry" >
+
+                    <Entry.Style>
+                        <Style TargetType="Entry">
+                            <Setter Property="WidthRequest" Value="300" />
+                            <Setter Property="HeightRequest" Value="50" />
+                        </Style>
+                    </Entry.Style>
+                    
+                </Entry>
+            </Border>
+
+
+            <Button
+                x:Name="FindMeBtn"
+                Text="Find me" 
+                SemanticProperties.Hint="finds your location"
+                Clicked="OnFindMeClicked"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
